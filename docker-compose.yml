@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  carvedrock.api:
+    image: ${DOCKER_REGISTRY-}carvedrockapi
+    build:
+      context: .
+      dockerfile: CarvedRock.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__AdminDatabase=Host=pgsql;Database=carved_rock;Username=postgres;Password=WeAreJustGettingSt^rted;
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - pgsql      
+
+  carvedrock.ui:
+    image: ${DOCKER_REGISTRY-}carvedrockui
+    build:
+      context: .
+      dockerfile: CarvedRock.UI/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  pgsql:
+    image: postgres
+    restart: always    
+    environment:
+      POSTGRES_PASSWORD: WeAreJustGettingSt^rted
+    ports:
+      - '5433:5432'
