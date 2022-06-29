@@ -36,7 +36,11 @@ public static class DuendeAuth
                     NameClaimType = "email"
                 };
             });
+
+        services.AddAccessTokenManagement();
         return services;
+
+        
     }
 }
 

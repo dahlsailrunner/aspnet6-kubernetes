@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.Api", "CarvedRoc
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FA0862E3-9D92-4D61-8694-F49755DAF2D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarvedRock.Shared", "CarvedRock.Shared\CarvedRock.Shared.csproj", "{0A47E25E-8DCE-48CD-83C6-017B70919A31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarvedRock.Shared", "CarvedRock.Shared\CarvedRock.Shared.csproj", "{0A47E25E-8DCE-48CD-83C6-017B70919A31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
